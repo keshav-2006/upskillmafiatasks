@@ -1,82 +1,80 @@
-/// Question 1:-
-// let nums= [1,2,3,4,5,6,7,8,9,10];
-// nums.map ((num) => {
-//   return num**2; 
-// });
+import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } from "@google/generative-ai";
+  
+  const apiKey = process.env.GEMINI_API_KEY;
+  const genAI = new GoogleGenerativeAI(apiKey);
+  
+  const model = genAI.getGenerativeModel({
+    model: "gemini-2.0-flash-exp",
+    systemInstruction: "build backend of the given problem statement \"Job seekers often struggle to create professional, tailored, and visually appealing resumes due to time constraints, lack of expertise, and difficulty customizing for specific roles. The solution is an AI-powered resume builder using the Gemini API to generate personalized content and streamline the creation process with support and easy download options.\"",
+  });
+  
+  const generationConfig = {
+    temperature: 1,
+    topP: 0.95,
+    topK: 40,
+    maxOutputTokens: 8192,
+    responseMimeType: "text/plain",
+  };
+  
+  async function run() {
+    const chatSession = model.startChat({
+      generationConfig,
+      history: [
+      ],
+    });
+  
+    const result = await chatSession.sendMessage("INSERT_INPUT_HERE");
+    console.log(result.response.text());
+  }
+  
+  run();
 
+  document.getElementById('resume-form').addEventListener('submit', async function (e) {
+    e.preventDefault();
 
-/// Question 2:-
-// function getGrade(score) {
-//     return score >= 90 ? 'A' :
-//            score >= 80 ? 'B' :
-//            score >= 70 ? 'C' :
-//            score >= 60 ? 'D' : 'F';
-// }
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const skills = document.getElementById('skills').value;
+    const experience = document.getElementById('experience').value;
 
+    const resumePreview = document.getElementById('resume-preview');
+    const previewContent = document.getElementById('preview-content');
 
-/// Question 3:-
-// const car = {
-//     companyName: "Toyota",
-//     model: "Corolla",
-//     year: 2020
-// };
-// function changeCarYear(carObject, newYear) {
-//     carObject.year = newYear;
-// }r
-// changeCarYear(car, 2023);
-// const { model, year } = car;
-// console.log(`Model: ${model}, Year: ${year}`);
-// console.log(car);
+    // Placeholder for API call to Gemini API
+    const resumeData = {
+      name,
+      email,
+      skills,
+      experience
+    };
 
+    // Mockup for response (replace this with API call result)
+    const response = {
+      resume: `Name: ${name}\nEmail: ${email}\nSkills: ${skills}\nExperience: ${experience}`
+    };
 
-/// Question 4:-
-// function isPrime(num) {
-//     if (num < 2) return false;
-//     for (let i = 2; i <= Math.sqrt(num); i++) {
-//         if (num % i === 0) return false;
-//     }
-//     return true;
-// }
-// const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 15];
-// const primeNumbers = numbers.filter(isPrime);
-// console.log(primeNumbers);
-
-
-///Question 5:-
-// Data cleaning: You can use map(), filter(), and reduce() to clean up data. For example, you can use map() to extract email addresses from a list of dictionaries, filter() to remove empty strings, and set() to remove duplicates. 
-// Data processing: You can use map(), filter(), and reduce() to process data in diverse ways. 
-// Functional programming: You can use map(), filter(), and reduce() to perform operations by passing functions inside other functions.
-
-
-///Question 6:-
-// async function fetchData() {
-//     try {
-//       const url = 'https://jsonplaceholder.typicode.com/posts';
-//       const response = await fetch(url);
-//       if (!response.ok) {
-//         throw new Error(`HTTP error! Status: ${response.status}`);
-//       }
-//       const data = await response.json();
-//       console.log(data);
-//     } catch (error) {
-//       console.error('Error fetching data:', error.message);
-//     }
-// }
-// fetchData();
-
-
-///Question 7:-
-// const person = {
-//     name: "Pedry",
-//     address: {
-//       street: "123 Elm Street",
-//       city: "Metropolis",
-//       zip: "713379"
-//     },
-//     contact: {
-//       email: "pedrick9811@gmail.com",
-//       phone: "555-1234"
-//     }
-//   };
-// const phoneNumber = person.contact?.phone;
-// console.log(phoneNumber);
+    // Display the generated resume
+    previewContent.textContent = response.resume;
+    resumePreview.style.display = 'block';
+  });
+    // Function to send data to the backend using Fetch API
+    function submitData() {
+        const name = document.getElementById('name').value;
+        
+        // Send the name to the Flask backend using fetch
+        fetch('http://127.0.0.1:5000/api/submit', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ name: name })
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Handle the response from the backend
+            document.getElementById('response').innerText = data.message;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
