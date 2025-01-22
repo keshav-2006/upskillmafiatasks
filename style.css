@@ -1,117 +1,70 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
-
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
-  font-family: 'Roboto', sans-serif;
-  margin: 0;
-  padding: 0;
-  background: linear-gradient(135deg, #1c58c8, #2a5298, #36d1dc);
-  background-size: cover;
-  color: #333;
-  overflow-x: hidden;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
 }
-header {
-  background: linear-gradient(90deg, #128b81, #4aa822);
-  color: white;
-  text-align: center;
-  padding: 1.5rem 0;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease-in-out;
-}
-header:hover {
-  transform: scale(1.02);
-}
-header h1 {
-  font-size: 2.5rem;
-  margin: 0;
-}
+  
 .container {
-  max-width: 700px;
-  margin: 30px auto;
-  padding: 20px;
-  background: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-  border-radius: 12px;
-  animation: fadeIn 1.5s;
+    text-align: center;
+    background: white;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
 }
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
 }
-.form-group {
-  margin-bottom: 20px;
+  
+.btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 10px 0;
 }
-label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: bold;
-  color: #333;
+  
+.btn:hover {
+    background-color: #218838;
 }
-input, textarea, button {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 1rem;
-  outline: none;
-  transition: all 0.3s ease;
+  
+#otp-display {
+    font-size: 18px;
+    margin: 20px 0;
 }
-input:focus, textarea:focus {
-  border-color: #ff7e5f;
-  box-shadow: 0 0 8px rgba(255, 126, 95, 0.4);
+  
+#otp-value {
+    font-weight: bold;
 }
-textarea {
-  resize: vertical;
-}
-button {
-  background: linear-gradient(90deg, #36d1dc, #5b86e5);
-  color: white;
-  border: none;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s;
-}
-button:hover {
-  background: linear-gradient(90deg, #5b86e5, #36d1dc);
-  box-shadow: 0 5px 15px rgba(91, 134, 229, 0.4);
-  transform: translateY(-2px);
-}
-.resume-preview {
-  margin-top: 30px;
-  padding: 20px;
-  border: 2px dashed #5b86e5;
-  background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 8px;
-  animation: slideIn 1s;
-}
-@keyframes slideIn {
-  from { transform: translateX(-20px); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
-}
-.resume-preview h2 {
-  margin-top: 0;
-  color: #5b86e5;
-}
-.footer {
-  text-align: center;
-  margin-top: 20px;
-  color: #555;
-  font-size: 0.9rem;
-}
-@media (max-width: 600px) {
-  header h1 {
-    font-size: 1.8rem;
-  }
-  .container {
-    padding: 15px;
-  }
-  input, textarea, button {
-    font-size: 0.9rem;
+  
+#otp-input {
+    width: 80%;
     padding: 10px;
-  }
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    text-align: center;
 }
+  
+#verification-message {
+    font-size: 16px;
+    font-weight: bold;
+    color: #28a745;
+    margin-top: 10px;
+    visibility: hidden;
+}
+.timer {
+    font-size: 14px;
+    color: black;
+    margin-top: 10px;
+  }

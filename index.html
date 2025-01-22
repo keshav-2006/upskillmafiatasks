@@ -3,48 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI-Powered Resume Builder</title>
+  <title>OTP Generator and Verification</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="shortcut icon" href="favicon-32x32.png" type="image/x-icon">
 </head>
 <body>
-  <header>
-    <h1>AI-Powered Resume Builder</h1>
-  </header>
-
   <div class="container">
-    <form id="resume-form">
-      <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" placeholder="Enter your name" required />
-      </div>
-
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" placeholder="Enter your email" required />
-      </div>
-
-      <div class="form-group">
-        <label for="skills">Skills</label>
-        <textarea id="skills" name="skills" rows="4" placeholder="List your skills, separated by commas"></textarea>
-      </div>
-
-      <div class="form-group">
-        <label for="experience">Experience</label>
-        <textarea id="experience" name="experience" rows="4" placeholder="Briefly describe your experience"></textarea>
-      </div>
-
-      <button type="submit">Generate Resume</button>
-    </form>
-
-    <div class="resume-preview" id="resume-preview" style="display: none;">
-      <h2>Resume Preview</h2>
-      <p id="preview-content"></p>
+    <h1>OTP Generator and Verification</h1>
+    <div id="otp-section">
+        <button id="generate-otp-btn" class="btn">Generate OTP</button>
+        <p id="generated-otp"></p>
     </div>
-  </div>
-
-  <div class="footer">
-    <p>&copy; 2025 AI Resume Builder. All rights reserved.</p>
+    <div id="verification-section">
+        <input type="text" id="otp-input" placeholder="Enter OTP">
+        <button id="verify-otp-btn" class="btn">Verify OTP</button>
+        <p id="verification-result"></p>
+    </div>
+    <div id="message" class="message"></div>
+    <div id="timer" class="timer"></div>
   </div>
   <script src="script.js"></script>
 </body>
